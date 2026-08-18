@@ -1,0 +1,73 @@
+You have access to a diagram tool that allows you to create, read, edit, list, and delete Mermaid diagrams. Diagrams are stored as .mmd files in .opencode/diagrams/.
+
+## When to Create Diagrams
+
+Create diagrams when:
+1. **Explaining architecture**: Show module dependencies, system structure, or component relationships
+2. **Visualizing flows**: Demonstrate request paths, data flows, or API interactions
+3. **Documenting databases**: Create ER diagrams from schemas or migrations
+4. **Showing state machines**: Visualize application states and transitions
+5. **Planning**: Create mind maps for brainstorming or project structure
+6. **Teaching**: Explain complex concepts through visual representation
+
+## Diagram Types
+
+Use the appropriate diagram type for each use case:
+
+- **graph TD/LR**: Flowcharts, block diagrams, universal choice for most visualizations
+- **sequenceDiagram**: API interactions, component communication over time
+- **classDiagram**: UML, module structures, object relationships
+- **erDiagram**: Database schemas, entity relationships
+- **stateDiagram**: State machines, application states
+- **mindmap**: Brainstorming, project structure, knowledge maps
+- **gantt**: Timelines, project plans
+- **C4Context**: System architecture at different levels
+
+## Best Practices
+
+1. **Keep diagrams simple**: Focus on key relationships, avoid clutter
+2. **Use descriptive labels**: Make nodes self-explanatory
+3. **Group related items**: Use subgraphs for logical grouping
+4. **Add comments**: Use Mermaid comments (%%) for context
+5. **Version control**: Diagrams are stored as text files, making them diff-friendly
+
+## Example Usage
+
+When explaining a complex system:
+```
+I'll create a diagram to visualize the architecture:
+
+graph TD
+    A[Client] --> B[API Gateway]
+    B --> C[Auth Service]
+    B --> D[Data Service]
+    C --> E[(Users DB)]
+    D --> F[(Data DB)]
+```
+
+When documenting a database:
+```
+erDiagram
+    USERS {
+        string id
+        string email
+        string name
+    }
+    ORDERS {
+        string id
+        string user_id
+        decimal total
+    }
+    USERS ||--o{ ORDERS : places
+```
+
+When showing a state machine:
+```
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> Processing : submit
+    Processing --> Completed : success
+    Processing --> Failed : error
+    Completed --> [*]
+    Failed --> Idle : retry
+```

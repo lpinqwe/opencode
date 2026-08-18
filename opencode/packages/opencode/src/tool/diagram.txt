@@ -1,0 +1,20 @@
+Use this tool to create, read, edit, list, and delete Mermaid diagram files (.mmd) stored in .opencode/diagrams/.
+
+Diagrams help visualize architecture, data flows, relationships, and complex concepts. Use them when:
+1. Explaining project architecture or module dependencies
+2. Showing request flows from client to database
+3. Documenting database schemas (ER diagrams)
+4. Visualizing state machines or API interactions
+5. Creating mind maps for planning or brainstorming
+6. Explaining complex concepts visually
+
+Supported Mermaid diagram types:
+- graph TD/LR (flowchart) - blocks and arrows, universal
+- mindmap - mental maps, brainstorming
+- sequenceDiagram - component interaction
+- classDiagram - UML, modules
+- erDiagram - databases, data
+- stateDiagram - state machines
+- gantt - timelines, plans
+
+The agent should create diagrams when explaining complex architecture or relationships. When reading a diagram, interpret and describe its structure and meaning.
