@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+ts-dist/
+*.bun-build
+tsconfig.tsbuildinfo
+
+# Turbo
+.turbo/
+
+# Environment
+.env
+.env.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*~
+Session.vim
+
+# OS
+.DS_Store
+Thumbs.db
+
+# OpenCode dev
+opencode/opencode-dev
+opencode/logs/
+opencode/.scripts/
+opencode/.direnv/
+opencode/.worktrees/
+opencode/.sst/
+opencode/playground/
+opencode/tmp/
+opencode/result/
+opencode/refs/
+opencode/a.out
+opencode/target/
+
+# Diagrams project
+diagrams/
