@@ -1,22 +1,21 @@
 FROM oven/bun:1.3.14 AS base
 WORKDIR /app
 
-# Copy package files for better caching
-COPY package.json bun.lock turbo.json ./
-COPY packages/core/package.json packages/core/
-COPY packages/app/package.json packages/app/
-COPY packages/opencode/package.json packages/opencode/
-COPY packages/schema/package.json packages/schema/
+# Copy all package.json files for workspace resolution
+COPY package.json bun.lock ./
+COPY packages/*/package.json packages/
 COPY packages/sdk/js/package.json packages/sdk/js/
+COPY packages/console/*/package.json packages/console/
+COPY packages/stats/*/package.json packages/stats/
 
 # Install dependencies
-RUN bun install --frozen-lockfile
+RUN bun install --frozen-lockfile || bun install
 
 # Copy source code
-COPY packages/ packages/
+COPY . .
 
 # Build the app
-RUN bun run build --filter=@opencode-ai/app
+RUN bun run --cwd packages/app build
 
 # Production stage
 FROM nginx:alpine AS production
