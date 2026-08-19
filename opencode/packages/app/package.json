@@ -92,6 +92,8 @@
     "solid-js": "catalog:",
     "solid-list": "catalog:",
     "solid-presence": "0.2.0",
-    "tailwindcss": "catalog:"
+    "tailwindcss": "catalog:",
+    "mermaid": "^12.0.0",
+    "@dagrejs/dagre": "^1.1.4"
   }
 }
