@@ -21,8 +21,8 @@ function App() {
     setMermaid(code)
     try {
       const result = parseMermaid(code)
-      if (result) {
-        const flow = mermaidToFlow(code)
+      if (result && result.nodes) {
+        const flow = mermaidToFlow(result)
         setFlowData(flow)
       }
     } catch (e) {
@@ -32,8 +32,11 @@ function App() {
 
   // Initial parse
   try {
-    const flow = mermaidToFlow(DEMO_MERMAID)
-    setTimeout(() => setFlowData(flow), 0)
+    const result = parseMermaid(DEMO_MERMAID)
+    if (result && result.nodes) {
+      const flow = mermaidToFlow(result)
+      setTimeout(() => setFlowData(flow), 0)
+    }
   } catch (e) {
     console.error("Init parse error:", e)
   }
@@ -47,8 +50,8 @@ function App() {
       <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>
         <div style={{ flex: 1, overflow: "auto", background: "#1e293b" }}>
           <DiagramCanvas
-            data={flowData()}
-            onNodeClick={(id) => console.log("Clicked:", id)}
+            flowData={flowData()}
+            onNodeClick={(node) => console.log("Clicked:", node.id)}
           />
         </div>
         <div style={{ width: "400px", border: "1px solid #334155", display: "flex", "flex-direction": "column" }}>
