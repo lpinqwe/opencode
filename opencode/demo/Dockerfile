@@ -1,17 +1,17 @@
 FROM node:20-slim AS build
 WORKDIR /app
 
-# Copy demo package files
-COPY demo/package.json ./
+# Copy package files
+COPY demo/package.json demo/package-lock.json* ./
 
 # Install dependencies
-RUN npm install --include=dev --legacy-peer-deps
+RUN npm install
 
-# Copy demo source
+# Copy source
 COPY demo/ .
 
 # Build
-RUN npx vite build
+RUN npm run build
 
 # Production
 FROM nginx:alpine
