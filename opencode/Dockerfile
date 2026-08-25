@@ -1,11 +1,11 @@
 FROM oven/bun:1.3.14 AS build
 WORKDIR /app
 
-# Copy everything at once - dockerignore handles exclusions
+# Copy everything at once
 COPY . .
 
-# Install dependencies
-RUN bun install
+# Install dependencies, skip native module builds (tree-sitter etc not needed for web app)
+RUN bun install --ignore-scripts
 
 # Build the web app
 RUN bun run --cwd packages/app build
